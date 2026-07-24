@@ -1,5 +1,6 @@
-package CONTROLADOR;
+package DAO;
 
+import CONEXION_DB.Conexion;
 import MODELO.Marca;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +12,9 @@ import java.util.ArrayList;
 public class MarcaDAO {
     private Conexion c = new Conexion();
     
-    
+    public void create(Marca marca){
+        
+    }
     
     
     

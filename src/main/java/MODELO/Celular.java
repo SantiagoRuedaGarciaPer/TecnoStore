@@ -78,7 +78,9 @@ public class Celular {
                         CELULAR
                Marca:               %s
                Modelo:              %s
-               """.formatted(marca, modelo);
+               Precio:              %s
+               Gama:                %s
+               """.formatted(marca.getNombre(), modelo, precio, gama);
     }
     
     

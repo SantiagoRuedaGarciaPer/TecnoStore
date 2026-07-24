@@ -1,4 +1,4 @@
-package CONTROLADOR;
+package CONEXION_DB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

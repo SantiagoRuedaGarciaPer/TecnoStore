@@ -1,5 +1,6 @@
 package CONTROLADOR;
 
+import DAO.CelularDAO;
 import MODELO.Celular;
 import MODELO.Gama;
 import MODELO.Marca;

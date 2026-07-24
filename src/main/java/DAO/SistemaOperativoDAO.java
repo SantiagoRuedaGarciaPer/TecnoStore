@@ -1,5 +1,6 @@
-package CONTROLADOR;
+package DAO;
 
+import CONEXION_DB.Conexion;
 import MODELO.Sistema_operativo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
