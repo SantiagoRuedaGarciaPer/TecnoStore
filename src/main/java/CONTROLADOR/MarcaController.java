@@ -16,4 +16,8 @@ public class MarcaController {
         return md.Buscar(id);
     }
     
+    public void listar(){
+        md.Listar().forEach(System.out::println);
+    }
+    
 }

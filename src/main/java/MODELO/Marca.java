@@ -25,8 +25,9 @@ public class Marca {
     @Override
     public String toString() {
         return """
-               %s
-               """.formatted(nombre);
+               ID:                  %s
+               Nombre:              %s
+               """.formatted(id, nombre);
     }
     
     

@@ -15,7 +15,7 @@ public class SistemaOperativoDAO {
         ArrayList<Sistema_operativo> sistemasOperativos = new ArrayList<>();
         
         try (Connection con = c.conectar()) {
-            PreparedStatement ps = con.prepareStatement("Select * from Marcas");
+            PreparedStatement ps = con.prepareStatement("Select * from Sistemas_operativos");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 sistemasOperativos.add(new Sistema_operativo(rs.getInt(1), rs.getString(2)));
@@ -30,7 +30,7 @@ public class SistemaOperativoDAO {
         Sistema_operativo sistemaOperativo = null;
         
         try (Connection con = c.conectar()) {
-            PreparedStatement ps = con.prepareStatement("Select * from Marcas where id=?");
+            PreparedStatement ps = con.prepareStatement("Select * from Sistemas_operativos where id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){

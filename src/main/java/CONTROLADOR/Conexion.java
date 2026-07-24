@@ -11,7 +11,7 @@ public class Conexion {
         Connection c = null;
 
         try {
-            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "Campus2023", "Campus2023");
+            c = DriverManager.getConnection("jdbc:mysql://localhost:3306/tecnostore_db", "campus2023", "campus2023");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

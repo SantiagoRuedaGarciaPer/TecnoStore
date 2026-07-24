@@ -21,6 +21,14 @@ public class Sistema_operativo {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
+    @Override
+    public String toString() {
+        return """
+               ID:                  %s
+               Nombre:              %s
+               """.formatted(id, nombre);
+    }
     
     
     

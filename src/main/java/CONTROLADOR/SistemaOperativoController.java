@@ -15,4 +15,8 @@ public class SistemaOperativoController {
     public Sistema_operativo buscar(int id){
         return sd.Buscar(id);
     }
+    
+    public void listar(){
+        sd.Listar().forEach(System.out::println);
+    }
 }
