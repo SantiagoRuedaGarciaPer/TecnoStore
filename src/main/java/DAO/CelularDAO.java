@@ -91,6 +91,8 @@ public class CelularDAO {
                 MarcaController mc = new MarcaController();
                 SistemaOperativoController sc = new SistemaOperativoController();
                 celulares = new Celular(rs.getInt(1), mc.buscar(rs.getInt(2)), rs.getString(3), sc.buscar(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7));
+            }else{
+                System.out.println("Celular no encontrado...");
             }
         } catch (SQLException e) {
         }

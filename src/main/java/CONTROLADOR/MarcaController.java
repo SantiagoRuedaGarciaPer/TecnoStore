@@ -15,7 +15,21 @@ public class MarcaController {
         md.create(marca);
     }
     
+    public void actualizar(){
+        listar();
+        Marca marca = buscar(v.validarEntero("Ingrese el id de la marca a actualizar"));
+        
+        String nombre = v.validarTexto("\nIngrese el nuevo nombre de la marca");
+        marca.setNombre(nombre);
+        
+        md.update(marca);
+    }
     
+    public void eliminar(){
+        listar();
+        Marca marca = buscar(v.validarEntero("Ingrese el id de la marca a eliminar"));
+        md.delete(marca);
+    }
     
     
     public Marca buscar(){
