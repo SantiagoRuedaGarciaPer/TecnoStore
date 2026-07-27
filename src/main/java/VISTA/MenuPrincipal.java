@@ -7,6 +7,7 @@ public class MenuPrincipal {
     private MenuMarcas mm = new MenuMarcas();
     private MenuClientes mcl = new MenuClientes();
     private MenuSistemasOperativos mso = new MenuSistemasOperativos();
+    private MenuVentas mv = new MenuVentas();
     
     private static MenuPrincipal menup;
     
@@ -46,7 +47,7 @@ public class MenuPrincipal {
                     mso.menu();
                     break;
                 case 5:
-                    System.out.println("Aun no tenemos ventas......");
+                    mv.menu();
                     break;
                 case 6:
                     System.out.println("Hasta luego.....");
