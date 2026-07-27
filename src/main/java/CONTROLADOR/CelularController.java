@@ -8,20 +8,21 @@ import MODELO.Sistema_operativo;
 import VISTA.Validaciones;
 
 
-public class CelularController {
+public class CelularController implements Controller{
     private CelularDAO cd = new CelularDAO();
     private Validaciones v = new Validaciones();
     private MarcaController mc = new MarcaController();
     private SistemaOperativoController sc = new SistemaOperativoController();
     
-    public void create(){
+    @Override
+    public void crear(){
         mc.listar();
-        Marca marca = mc.buscar(v.validarEntero("Ingrese el id de la marca"));
+        Marca marca = mc.buscarMarca();
         
         String modelo = v.validarTexto("Ingrese el modelo");
         
         sc.listar();
-        Sistema_operativo sistema = sc.buscar(v.validarEntero("Ingrese el id del sistema operativo"));
+        Sistema_operativo sistema = sc.buscarSO(v.validarEntero("Ingrese el id del sistema operativo"));
         
         Gama gama = Gama.valueOf(v.validarTexto("ingrese la gama (Alta/Media/Baja/  || Respetar mayusculas)")); 
         
@@ -33,7 +34,8 @@ public class CelularController {
         
     }
     
-    public void update(){
+    @Override
+    public void actualizar(){
         listar();
         Celular cel = cd.buscar(v.validarEntero("ingrese el celular a actualizar"));
         int op = v.validarEntero("""
@@ -49,7 +51,7 @@ public class CelularController {
         switch (op){
             case 1:
                 mc.listar();
-                Marca marca = mc.buscar(v.validarEntero("Ingrese el id de la marca"));
+                Marca marca = mc.buscarMarca(v.validarEntero("Ingrese el id de la marca"));
                 cel.setMarca(marca);
                 break;
             case 2:
@@ -58,7 +60,7 @@ public class CelularController {
                 break;
             case 3:
                 sc.listar();
-                Sistema_operativo sistema = sc.buscar(v.validarEntero("Ingrese el id del sistema operativo"));
+                Sistema_operativo sistema = sc.buscarSO(v.validarEntero("Ingrese el id del sistema operativo"));
                 cel.setSis_ope(sistema);
                 break;
             case 4:
@@ -79,20 +81,22 @@ public class CelularController {
         }
     }
     
-    public void delete(){
+    @Override
+    public void eliminar(){
         listar();
         Celular cel = cd.buscar(v.validarEntero("Ingrese el id del celular a eliminar"));
         cd.Delete(cel);
         
     }
     
-    public Celular buscar(int id){
-        Celular cel = cd.buscar(id);
-        return cel;
-    }
-    
+    @Override
     public void listar(){
         cd.listar().forEach(System.out::println);
+    }
+    
+    public void buscar(){
+        Celular cel = cd.buscar(v.validarEntero("ingrese el id a buscar"));
+        System.out.println(cel);
     }
     
 }

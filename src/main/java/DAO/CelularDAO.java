@@ -72,7 +72,7 @@ public class CelularDAO {
             while(rs.next()){
                 MarcaController mc = new MarcaController();
                 SistemaOperativoController sc = new SistemaOperativoController();
-                celulares.add(new Celular(rs.getInt(1), mc.buscar(rs.getInt(2)), rs.getString(3), sc.buscar(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7)));
+                celulares.add(new Celular(rs.getInt(1), mc.buscarMarca(rs.getInt(2)), rs.getString(3), sc.buscarSO(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7)));
             }
         } catch (SQLException e) {
         }
@@ -90,7 +90,7 @@ public class CelularDAO {
             if(rs.next()){
                 MarcaController mc = new MarcaController();
                 SistemaOperativoController sc = new SistemaOperativoController();
-                celulares = new Celular(rs.getInt(1), mc.buscar(rs.getInt(2)), rs.getString(3), sc.buscar(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7));
+                celulares = new Celular(rs.getInt(1), mc.buscarMarca(rs.getInt(2)), rs.getString(3), sc.buscarSO(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7));
             }else{
                 System.out.println("Celular no encontrado...");
             }

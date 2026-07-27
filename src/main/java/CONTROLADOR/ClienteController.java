@@ -6,10 +6,11 @@ import MODELO.Tipo_identificacion;
 import VISTA.Validaciones;
 
 
-public class ClienteController {
+public class ClienteController implements Controller {
     private final ClienteDAO cd = new ClienteDAO();
     private final Validaciones v = new Validaciones();
     
+    @Override
     public void crear(){
         System.out.println("===============Modulo creacion cliente==========");
         String nombre = v.validarTexto("Ingrese el nombre");
@@ -30,9 +31,10 @@ public class ClienteController {
         cd.create(c);
     }
     
+    @Override
     public void actualizar(){
         System.out.println("====================Modulo Actualizar Clientes====================");
-        Cliente cliente = buscar();
+        Cliente cliente = cd.buscar(v.validarEntero("Ingrese el id del cliente a actualizar"));
         
         
         int op = v.validarEnteroRango("""
@@ -73,19 +75,20 @@ public class ClienteController {
         cd.update(cliente);
     }
     
+    @Override
     public void eliminar(){
-        Cliente cliente = buscar();
+        Cliente cliente = cd.buscar(v.validarEntero("ingrese el id del cliente a eliminar"));
         cd.delete(cliente);
     }
-    
-    public Cliente buscar(){
-        listar();
+
+    @Override
+    public void listar(){
+        cd.listar().forEach(System.out::println);
+    }
+        
+    public void buscar(){
         int id = v.validarEntero("ingrese el id a buscar");
         Cliente c = cd.buscar(id);
-        return c;
-    }
-    
-    public void listar(){
-        cd.listar();
+        System.out.println(c);
     }
 }

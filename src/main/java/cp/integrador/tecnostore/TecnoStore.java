@@ -4,6 +4,8 @@
 
 package cp.integrador.tecnostore;
 
+import VISTA.MenuPrincipal;
+
 /**
  *
  * @author camper
@@ -11,6 +13,7 @@ package cp.integrador.tecnostore;
 public class TecnoStore {
 
     public static void main(String[] args) {
-        
+        MenuPrincipal menu = MenuPrincipal.getInstance();
+        menu.menu();
     }
 }
