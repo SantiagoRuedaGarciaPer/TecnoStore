@@ -106,7 +106,7 @@ public class VentasDAO {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 Cliente cliente = ccl.buscar(rs.getInt(2));
-                venta = new Ventas(rs.getInt(1), cliente, rs.getDouble(3));
+                venta = new Ventas(rs.getInt(1), cliente, rs.getDouble(3), rs.getDate(4));
             }
             return venta;
         } catch (SQLException e) {
@@ -124,7 +124,7 @@ public class VentasDAO {
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Cliente cliente = ccl.buscar(rs.getInt(2));
-                ventas.add(new Ventas(rs.getInt(1), cliente, rs.getDouble(3)));
+                ventas.add(new Ventas(rs.getInt(1), cliente, rs.getDouble(3), rs.getDate(4)));
             }
             return ventas;
         } catch (SQLException e) {

@@ -1,15 +1,19 @@
 package MODELO;
 
+import java.sql.Date;
+
 
 public class Ventas {
     private int id;
     private Cliente cliente;
     private double total;
+    private Date fecha;
 
-    public Ventas(int id, Cliente cliente, double total) {
+    public Ventas(int id, Cliente cliente, double total, Date fecha) {
         this.id = id;
         this.cliente = cliente;
         this.total = total;
+        this.fecha = fecha;
     }
 
     public int getId() {
@@ -31,6 +35,17 @@ public class Ventas {
     public void setTotal(double total) {
         this.total = total;
     }
+
+    @Override
+    public String toString() {
+       return """
+              ID:           %s
+              FECHA         %s
+              TOTAL         %s
+              CLIENTE       %s
+              """.formatted(id, fecha, total, cliente);
+    }
+    
     
     
     
