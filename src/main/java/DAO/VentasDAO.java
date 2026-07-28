@@ -60,6 +60,22 @@ public class VentasDAO {
         }
     }
     
+    public void update(Ventas venta){
+        try (Connection con = c.conectar()) {
+            System.out.println("Modulo actualizar venta");
+            PreparedStatement ps = con.prepareStatement("update Ventas set id_cliente=?, total=? where id=?", Statement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, venta.getCliente().getId());
+            ps.setInt(2, 0);
+            ps.setInt(3, venta.getId());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+
+            System.out.println(e.getMessage());
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    
     public Ventas buscar(int id){
         try (Connection con = c.conectar()) {
             Ventas venta = null;
