@@ -94,9 +94,15 @@ public class CelularController implements Controller{
         cd.listar().forEach(System.out::println);
     }
     
+    @Override
     public void buscar(){
         Celular cel = cd.buscar(v.validarEntero("ingrese el id a buscar"));
         System.out.println(cel);
+    }
+    
+    public Celular buscar(int id){
+        Celular cel = cd.buscar(v.validarEntero("ingrese el id a buscar"));
+        return cel;
     }
     
 }

@@ -29,6 +29,8 @@ public class CelularDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -45,6 +47,8 @@ public class CelularDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -56,6 +60,8 @@ public class CelularDAO {
                 ps.setInt(1, celular.getId());
                 ps.executeUpdate();
             } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            }catch (Exception e) {
                 System.out.println(e.getMessage());
             }
         }else{
@@ -75,6 +81,9 @@ public class CelularDAO {
                 celulares.add(new Celular(rs.getInt(1), mc.buscarMarca(rs.getInt(2)), rs.getString(3), sc.buscarSO(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7)));
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
         return celulares;
@@ -95,6 +104,9 @@ public class CelularDAO {
                 System.out.println("Celular no encontrado...");
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
         return celulares;

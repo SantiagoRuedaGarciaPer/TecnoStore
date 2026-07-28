@@ -85,10 +85,15 @@ public class ClienteController implements Controller {
     public void listar(){
         cd.listar().forEach(System.out::println);
     }
-        
+    
+    @Override
     public void buscar(){
         int id = v.validarEntero("ingrese el id a buscar");
         Cliente c = cd.buscar(id);
         System.out.println(c);
+    }
+    public Cliente buscar(int id){
+        Cliente c = cd.buscar(id);
+        return c;
     }
 }

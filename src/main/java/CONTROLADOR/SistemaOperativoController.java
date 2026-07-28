@@ -4,35 +4,37 @@ import DAO.SistemaOperativoDAO;
 import MODELO.Sistema_operativo;
 import VISTA.Validaciones;
 
+public class SistemaOperativoController implements Controller {
 
-public class SistemaOperativoController implements Controller{
     private SistemaOperativoDAO sd = new SistemaOperativoDAO();
     private Validaciones v = new Validaciones();
-    
+
     @Override
-    public void crear(){
+    public void crear() {
         System.out.println("No se pueden crear mas sistemas operativos");
     }
-    
+
     @Override
-    public void actualizar(){
+    public void actualizar() {
         System.out.println("No se puede actualizar los sistemas operativos");
     }
-    
+
     @Override
-    public void eliminar(){
+    public void eliminar() {
         System.out.println("No se puede eliminar un sistema operativo");
     }
-    
-    public Sistema_operativo buscarSO(int id){
+
+    public Sistema_operativo buscarSO(int id) {
         return sd.Buscar(id);
     }
-    
-    public void buscar(){
+
+    @Override
+    public void buscar() {
         System.out.println(sd.Buscar(v.validarEntero("ingrese el id a buscar")));
     }
-    
-    public void listar(){
+
+    @Override
+    public void listar() {
         sd.Listar().forEach(System.out::println);
     }
 }

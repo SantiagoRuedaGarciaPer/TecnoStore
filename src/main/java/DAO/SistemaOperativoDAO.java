@@ -22,6 +22,9 @@ public class SistemaOperativoDAO {
                 sistemasOperativos.add(new Sistema_operativo(rs.getInt(1), rs.getString(2)));
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
         return sistemasOperativos;
@@ -38,6 +41,8 @@ public class SistemaOperativoDAO {
                 sistemaOperativo = new Sistema_operativo(rs.getInt(1), rs.getString(2));
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         

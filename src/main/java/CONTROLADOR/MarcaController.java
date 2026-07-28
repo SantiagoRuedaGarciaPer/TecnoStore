@@ -34,13 +34,9 @@ public class MarcaController implements Controller{
         md.delete(marca);
     }
     
-    
+    @Override
     public void buscar(){
         System.out.println(md.Buscar(v.validarEntero("Ingrese el id a buscar")));
-    }
-    
-    public void buscar(int id){
-        System.out.println(md.Buscar(id));
     }
     
     public Marca buscarMarca(){

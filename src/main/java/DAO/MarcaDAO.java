@@ -20,6 +20,8 @@ public class MarcaDAO {
             st.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -30,6 +32,8 @@ public class MarcaDAO {
             ps.setInt(2, marca.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
@@ -43,7 +47,9 @@ public class MarcaDAO {
                 ps.executeUpdate();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-            }
+            }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         }else{
             JOptionPane.showInternalMessageDialog(null, "Operacion cancelada");
         }
@@ -59,6 +65,8 @@ public class MarcaDAO {
                 marcas.add(new Marca(rs.getInt(1), rs.getString(2)));
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         
@@ -76,6 +84,8 @@ public class MarcaDAO {
                 marca = new Marca(rs.getInt(1), rs.getString(2));
             }
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         

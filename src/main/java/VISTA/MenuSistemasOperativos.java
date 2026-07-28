@@ -11,7 +11,7 @@ public class MenuSistemasOperativos {
         int op = 0;
         do {
             op = v.validarEnteroRango("""
-                                      Menu Celulares
+                                      Menu Sistemas Operativos
                                       1. Buscar
                                       2. Listar
                                       3. Salir

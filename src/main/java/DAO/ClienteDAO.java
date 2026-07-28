@@ -30,6 +30,8 @@ public class ClienteDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
     
@@ -46,6 +48,8 @@ public class ClienteDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
     }
@@ -59,7 +63,9 @@ public class ClienteDAO {
                 ps.executeUpdate();
             } catch (SQLException e) {
                 System.out.println(e.getMessage());
-            }
+            }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         }else{
             JOptionPane.showInternalMessageDialog(null, "Operacion cancelada");
         }
@@ -80,6 +86,8 @@ public class ClienteDAO {
             
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
         }
         
         return cliente;
@@ -96,6 +104,8 @@ public class ClienteDAO {
             }
             
         } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
             System.out.println(e.getMessage());
         }
         

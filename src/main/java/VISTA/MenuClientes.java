@@ -10,7 +10,7 @@ public class MenuClientes {
         int op = 0;
         do{
             op = v.validarEnteroRango("""
-                                      Menu Celulares
+                                      Menu Clientes
                                       1. Agregar celular
                                       2. Actualizar
                                       3. Eliminar

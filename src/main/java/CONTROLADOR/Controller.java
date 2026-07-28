@@ -13,4 +13,5 @@ public interface Controller {
     public void actualizar();
     public void eliminar();
     public void listar();
+    public void buscar();
 }
