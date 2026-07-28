@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 public class VentasDAO {
@@ -108,6 +109,24 @@ public class VentasDAO {
                 venta = new Ventas(rs.getInt(1), cliente, rs.getDouble(3));
             }
             return venta;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return null;
+    }
+    
+     public ArrayList<Ventas> listar(){
+        try (Connection con = c.conectar()) {
+            ArrayList<Ventas> ventas = new ArrayList<>();
+            PreparedStatement ps = con.prepareStatement("Select * from ventas where ");
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Cliente cliente = ccl.buscar(rs.getInt(2));
+                ventas.add(new Ventas(rs.getInt(1), cliente, rs.getDouble(3)));
+            }
+            return ventas;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }catch (Exception e) {

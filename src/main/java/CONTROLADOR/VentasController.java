@@ -30,7 +30,7 @@ public class VentasController implements Controller {
         vd.update(venta);
 
     }
-
+    
 
     @Override
         public void eliminar() {
@@ -41,7 +41,7 @@ public class VentasController implements Controller {
 
     @Override
     public void listar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        vd.listar().forEach(System.out::println);
     }   
     @Override
     public void buscar(){
