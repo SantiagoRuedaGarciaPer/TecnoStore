@@ -15,7 +15,7 @@ public class VentasController implements Controller {
     public void crear() {
         ccl.listar();
         Cliente cliente = ccl.buscar(v.validarEntero("ingrese el id del cliente"));
-        Ventas venta = new Ventas(0, cliente);
+        Ventas venta = new Ventas(0, cliente, 0);
         vd.create(venta);
     }
 

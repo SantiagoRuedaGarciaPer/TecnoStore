@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 public class VentasDAO {
     private final Conexion c = new Conexion();
@@ -76,6 +77,26 @@ public class VentasDAO {
         }
     }
     
+    public void delete(Ventas venta){
+        int op = JOptionPane.showInternalConfirmDialog(null, "Desea eliminar la venta "+venta.getId()+" con un total de "+venta.getTotal()+"?");
+        if(op == 0){
+            try (Connection con = c.conectar()) {
+                PreparedStatement ps1 = con.prepareStatement("DELETE FROM Detalle_ventas WHERE id_venta=?");
+                ps1.setInt(1, venta.getId());
+                PreparedStatement ps2 = con.prepareStatement("DELETE FROM Ventas where id=?");
+                ps2.setInt(1, venta.getId());
+                ps1.executeUpdate();
+                ps2.executeUpdate();
+            } catch (SQLException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
+        }else{
+            JOptionPane.showInternalMessageDialog(null, "Operacion cancelada");
+        }
+    }
+    
     public Ventas buscar(int id){
         try (Connection con = c.conectar()) {
             Ventas venta = null;
@@ -84,7 +105,7 @@ public class VentasDAO {
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 Cliente cliente = ccl.buscar(rs.getInt(2));
-                venta = new Ventas(rs.getInt(1), cliente);
+                venta = new Ventas(rs.getInt(1), cliente, rs.getDouble(3));
             }
             return venta;
         } catch (SQLException e) {
