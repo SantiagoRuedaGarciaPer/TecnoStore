@@ -32,17 +32,19 @@ public class VentasController implements Controller {
     }
 
 
-@Override
-public void eliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    @Override
+        public void eliminar() {
+        listar();
+        Ventas venta = buscar(v.validarEntero("ingrese el id de la venta a eliminar"));
+        vd.delete(venta);
     }
 
     @Override
-public void listar() {
+    public void listar() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }   
     @Override
-public void buscar(){
+    public void buscar(){
         System.out.println(vd.buscar(v.validarEntero("Ingrese el id a buscar")));
     }
     public Ventas buscar(int id){
