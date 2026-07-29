@@ -1,7 +1,7 @@
 package VISTA;
 
 
-public class MenuPrincipal {
+public class MenuPrincipal implements MenuInterface{
     private Validaciones v = new Validaciones();
     private MenuCelulares mc = new MenuCelulares();
     private MenuMarcas mm = new MenuMarcas();
@@ -21,6 +21,7 @@ public class MenuPrincipal {
         
     }
     
+    @Override
     public void menu(){
         int op = 0;
         do{

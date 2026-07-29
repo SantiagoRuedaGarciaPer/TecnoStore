@@ -3,9 +3,11 @@ package VISTA;
 import CONTROLADOR.CelularController;
 
 
-public class MenuCelulares {
+public class MenuCelulares implements MenuInterface{
     private CelularController cc = new CelularController();
     private Validaciones v = new Validaciones();
+    
+    @Override
     public void menu(){
         int op = 0;
         do{

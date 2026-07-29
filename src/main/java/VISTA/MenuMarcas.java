@@ -3,9 +3,11 @@ package VISTA;
 import CONTROLADOR.MarcaController;
 
 
-public class MenuMarcas {
+public class MenuMarcas implements MenuInterface{
     private MarcaController cc = new MarcaController();
     private Validaciones v = new Validaciones();
+    
+   @Override
     public void menu(){
         int op = 0;
         do{

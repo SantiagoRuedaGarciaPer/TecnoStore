@@ -2,11 +2,12 @@ package VISTA;
 
 import CONTROLADOR.VentasController;
 
-public class MenuVentas {
+public class MenuVentas implements MenuInterface {
 
     private Validaciones v = new Validaciones();
     private VentasController vc = new VentasController();
 
+    @Override
     public void menu() {
         int op = v.validarEnteroRango("""
                                       *********Menu ventas*********

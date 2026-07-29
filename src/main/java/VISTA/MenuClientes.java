@@ -3,9 +3,11 @@ package VISTA;
 import CONTROLADOR.ClienteController;
 
 
-public class MenuClientes {
+public class MenuClientes implements MenuInterface {
     private ClienteController cc = new ClienteController();
     private Validaciones v = new Validaciones();
+    
+    @Override
     public void menu(){
         int op = 0;
         do{

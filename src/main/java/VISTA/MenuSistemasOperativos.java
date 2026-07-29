@@ -3,10 +3,11 @@ package VISTA;
 import CONTROLADOR.SistemaOperativoController;
 
 
-public class MenuSistemasOperativos {
+public class MenuSistemasOperativos implements MenuInterface{
     private SistemaOperativoController cc = new SistemaOperativoController();
     private Validaciones v = new Validaciones();
 
+    @Override
     public void menu() {
         int op = 0;
         do {
