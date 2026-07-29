@@ -6,6 +6,9 @@ import MODELO.Gama;
 import MODELO.Marca;
 import MODELO.Sistema_operativo;
 import VISTA.Validaciones;
+import java.util.ArrayList;
+import java.util.function.BiConsumer;
+import java.util.stream.Stream;
 
 
 public class CelularController implements Controller{
@@ -94,6 +97,10 @@ public class CelularController implements Controller{
         cd.listar().forEach(System.out::println);
     }
     
+    public ArrayList<Celular> listarRetorno(){
+        return cd.listar();
+    }
+    
     @Override
     public void buscar(){
         Celular cel = cd.buscar(v.validarEntero("ingrese el id a buscar"));
@@ -103,6 +110,10 @@ public class CelularController implements Controller{
     public Celular buscar(int id){
         Celular cel = cd.buscar(v.validarEntero("ingrese el id a buscar"));
         return cel;
+    }
+    
+    public void masVendidos(){
+        Stream.of(cd.getMasVendidos()).forEach(System.out::println);
     }
     
 }

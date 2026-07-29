@@ -6,6 +6,7 @@ import MODELO.Ventas;
 import VISTA.Validaciones;
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class VentasController implements Controller {
 
@@ -44,7 +45,12 @@ public class VentasController implements Controller {
     @Override
     public void listar() {
         vd.listar().forEach(System.out::println);
+    }
+    
+    public ArrayList<Ventas> listarRetorno() {
+        return vd.listar();
     }   
+    
     @Override
     public void buscar(){
         System.out.println(vd.buscar(v.validarEntero("Ingrese el id a buscar")));

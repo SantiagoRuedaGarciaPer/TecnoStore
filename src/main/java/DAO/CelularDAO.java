@@ -10,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JOptionPane;
 
 public class CelularDAO {
@@ -90,7 +92,7 @@ public class CelularDAO {
     }
     
     public Celular buscar(int id){
-        Celular celulares = null;
+        Celular celular = null;
         
         try (Connection con  = c.conectar()) {
             PreparedStatement ps = con.prepareStatement("Select * from Celulares where id=?");
@@ -99,13 +101,39 @@ public class CelularDAO {
             if(rs.next()){
                 MarcaController mc = new MarcaController();
                 SistemaOperativoController sc = new SistemaOperativoController();
-                celulares = new Celular(rs.getInt(1), mc.buscarMarca(rs.getInt(2)), rs.getString(3), sc.buscarSO(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7));
+                celular = new Celular(rs.getInt(1), mc.buscarMarca(rs.getInt(2)), rs.getString(3), sc.buscarSO(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7));
             }else{
                 System.out.println("Celular no encontrado...");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        
+        return celular;
+    }
+    
+    public Map<Celular, Integer> getMasVendidos(){
+        Map<Celular, Integer> celulares = new HashMap<>();
+        
+        try (Connection con = c.conectar()) {
+            PreparedStatement ps = con.prepareStatement("""
+                                                        SELECT c.*, count(d.id_celular)
+                                                        From Celulares c
+                                                        Join Detalle_ventas d ON d.id_celular = c.id
+                                                        Group By c.id
+                                                        Limit 3;
+                                                        """);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                MarcaController mc = new MarcaController();
+                SistemaOperativoController sc = new SistemaOperativoController();
+                celulares.put(new Celular(rs.getInt(1), mc.buscarMarca(rs.getInt(2)), rs.getString(3), sc.buscarSO(rs.getInt(4)), Gama.valueOf(rs.getString(5)), rs.getDouble(6), rs.getInt(7)), rs.getInt(2));
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        } catch (Exception e){
             System.out.println(e.getMessage());
         }
         

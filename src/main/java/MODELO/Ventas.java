@@ -16,6 +16,10 @@ public class Ventas {
         this.fecha = fecha;
     }
 
+    public Date getFecha() {
+        return fecha;
+    }
+    
     public int getId() {
         return id;
     }

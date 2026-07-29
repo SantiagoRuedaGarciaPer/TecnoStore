@@ -8,7 +8,7 @@ public class MenuPrincipal implements MenuInterface{
     private MenuClientes mcl = new MenuClientes();
     private MenuSistemasOperativos mso = new MenuSistemasOperativos();
     private MenuVentas mv = new MenuVentas();
-    
+    private MenuReportes mr = new MenuReportes();
     private static MenuPrincipal menup;
     
     public static MenuPrincipal getInstance(){
@@ -32,7 +32,8 @@ public class MenuPrincipal implements MenuInterface{
                                   3. Menu marcas
                                   4. Menu sistemas operativos
                                   5. Menu ventas
-                                  6. Salir
+                                  6. Menu reportes
+                                  7. Salir
                                   """, 6, 1);
             switch (op){
                 case 1:
@@ -51,10 +52,13 @@ public class MenuPrincipal implements MenuInterface{
                     mv.menu();
                     break;
                 case 6:
+                    mr.menu();
+                    break;
+                case 7:
                     System.out.println("Hasta luego.....");
                     break;
             }
-        }while(op != 6);
+        }while(op != 7);
     }
     
 }
