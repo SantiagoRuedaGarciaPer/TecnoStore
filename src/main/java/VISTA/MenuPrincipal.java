@@ -34,7 +34,7 @@ public class MenuPrincipal implements MenuInterface{
                                   5. Menu ventas
                                   6. Menu reportes
                                   7. Salir
-                                  """, 6, 1);
+                                  """, 7, 1);
             switch (op){
                 case 1:
                     mc.menu();

@@ -121,7 +121,7 @@ public class CelularDAO {
             PreparedStatement ps = con.prepareStatement("""
                                                         SELECT c.*, count(d.id_celular)
                                                         From Celulares c
-                                                        Join Detalle_ventas d ON d.id_celular = c.id
+                                                        Join Detalles_venta d ON d.id_celular = c.id
                                                         Group By c.id
                                                         Limit 3;
                                                         """);

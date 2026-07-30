@@ -1,22 +1,22 @@
 package MODELO;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 
 public class Ventas {
     private int id;
     private Cliente cliente;
     private double total;
-    private Date fecha;
+    private Timestamp fecha;
 
-    public Ventas(int id, Cliente cliente, double total, Date fecha) {
+    public Ventas(int id, Cliente cliente, double total, Timestamp fecha) {
         this.id = id;
         this.cliente = cliente;
         this.total = total;
         this.fecha = fecha;
     }
 
-    public Date getFecha() {
+    public Timestamp getFecha() {
         return fecha;
     }
     
@@ -43,11 +43,11 @@ public class Ventas {
     @Override
     public String toString() {
        return """
-              ID:           %s
-              FECHA         %s
-              TOTAL         %s
-              CLIENTE       %s
-              """.formatted(id, fecha, total, cliente);
+              ID:                       %s
+              FECHA                     %s
+              TOTAL                     %s
+              CLIENTE       \n%s
+              """.formatted(id, String.valueOf(fecha), total, cliente);
     }
     
     

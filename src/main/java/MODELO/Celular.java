@@ -76,11 +76,12 @@ public class Celular {
     public String toString() {
         return """
                         CELULAR
+               Id:                  %s
                Marca:               %s
                Modelo:              %s
                Precio:              %s
                Gama:                %s
-               """.formatted(marca.getNombre(), modelo, precio, gama);
+               """.formatted(id, marca.getNombre(), modelo, precio, gama);
     }
     
     

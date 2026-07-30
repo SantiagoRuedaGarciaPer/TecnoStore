@@ -5,6 +5,8 @@ import MODELO.Cliente;
 import MODELO.Ventas;
 import VISTA.Validaciones;
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -18,7 +20,7 @@ public class VentasController implements Controller {
     public void crear() {
         ccl.listar();
         Cliente cliente = ccl.buscar(v.validarEntero("ingrese el id del cliente"));
-        Ventas venta = new Ventas(0, cliente, 0, Date.valueOf(LocalDate.now()));
+        Ventas venta = new Ventas(0, cliente, 0, Timestamp.from(Instant.MIN));
         vd.create(venta);
     }
 

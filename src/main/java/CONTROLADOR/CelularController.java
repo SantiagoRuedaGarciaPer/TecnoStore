@@ -108,7 +108,7 @@ public class CelularController implements Controller{
     }
     
     public Celular buscar(int id){
-        Celular cel = cd.buscar(v.validarEntero("ingrese el id a buscar"));
+        Celular cel = cd.buscar(id);
         return cel;
     }
     

@@ -26,18 +26,20 @@ public class VentasDAO {
             System.out.println("Modulo vender");
             PreparedStatement ps = con.prepareStatement("INSERT INTO Ventas(id_cliente, total) values (?, ?)", Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, venta.getCliente().getId());
-            ps.setInt(2, 0);
+            ps.setDouble(2, 0);
             ps.executeUpdate();
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                ps = con.prepareStatement("INSERT INTO Detalle_ventas(id_venta, id_celular) values(?, ?)");
+                ps = con.prepareStatement("INSERT INTO Detalles_venta(id_venta, id_celular) values(?, ?)");
                 int idVenta = rs.getInt(1);
                 double precio = 0;
                 int cont = 0;
                 do {
                     cc.listar();
-                    cont = v.validarEntero("Ingrese el id del celular a agregar a la venta. Ingrese 0 para salir");
+                    cont = v.validarEntero("Ingrese el id del celular a agregar a la venta. Ingrese 0 para salir", 0);
+                    System.out.println(cont);
                     if (cont != 0) {
+                        System.out.println(cont);
                         Celular cel = cc.buscar(cont);
                         ps.setInt(1, idVenta);
                         ps.setInt(2, cel.getId());
@@ -67,7 +69,7 @@ public class VentasDAO {
             System.out.println("Modulo actualizar venta");
             PreparedStatement ps = con.prepareStatement("update Ventas set id_cliente=?, total=? where id=?", Statement.RETURN_GENERATED_KEYS);
             ps.setInt(1, venta.getCliente().getId());
-            ps.setInt(2, 0);
+            ps.setDouble(2, venta.getTotal());
             ps.setInt(3, venta.getId());
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -82,7 +84,7 @@ public class VentasDAO {
         int op = JOptionPane.showInternalConfirmDialog(null, "Desea eliminar la venta "+venta.getId()+" con un total de "+venta.getTotal()+"?");
         if(op == 0){
             try (Connection con = c.conectar()) {
-                PreparedStatement ps1 = con.prepareStatement("DELETE FROM Detalle_ventas WHERE id_venta=?");
+                PreparedStatement ps1 = con.prepareStatement("DELETE FROM Detalles_venta WHERE id_venta=?");
                 ps1.setInt(1, venta.getId());
                 PreparedStatement ps2 = con.prepareStatement("DELETE FROM Ventas where id=?");
                 ps2.setInt(1, venta.getId());
@@ -101,12 +103,12 @@ public class VentasDAO {
     public Ventas buscar(int id){
         try (Connection con = c.conectar()) {
             Ventas venta = null;
-            PreparedStatement ps = con.prepareStatement("Select * from ventas where id=?");
+            PreparedStatement ps = con.prepareStatement("Select * from Ventas where id=?");
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
                 Cliente cliente = ccl.buscar(rs.getInt(2));
-                venta = new Ventas(rs.getInt(1), cliente, rs.getDouble(3), rs.getDate(4));
+                venta = new Ventas(rs.getInt(1), cliente, rs.getDouble(4), rs.getTimestamp(3));
             }
             return venta;
         } catch (SQLException e) {
@@ -120,11 +122,11 @@ public class VentasDAO {
      public ArrayList<Ventas> listar(){
         try (Connection con = c.conectar()) {
             ArrayList<Ventas> ventas = new ArrayList<>();
-            PreparedStatement ps = con.prepareStatement("Select * from ventas where ");
+            PreparedStatement ps = con.prepareStatement("Select * from Ventas");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Cliente cliente = ccl.buscar(rs.getInt(2));
-                ventas.add(new Ventas(rs.getInt(1), cliente, rs.getDouble(3), rs.getDate(4)));
+                ventas.add(new Ventas(rs.getInt(1), cliente, rs.getDouble(4), rs.getTimestamp(3)));
             }
             return ventas;
         } catch (SQLException e) {

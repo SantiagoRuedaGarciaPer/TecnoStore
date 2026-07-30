@@ -65,12 +65,13 @@ public class Cliente {
     @Override
     public String toString() {
         return """
+               ID:                      %s
                NOMBRE:                  %s
                CORREO:                  %s
                TIPO IDENTIFICACION      %s
                IDENTIFICACION           %s
                TELEFONO                 %s
-               """;
+               """.formatted(id, nombre, correo, String.valueOf(tipo_identificacion), identificacion, telefono);
     }
     
     

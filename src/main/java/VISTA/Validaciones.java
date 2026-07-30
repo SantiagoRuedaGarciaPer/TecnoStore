@@ -5,6 +5,19 @@ import java.util.Scanner;
 
 public class Validaciones {
 
+    public int validarEntero(String mensaje, int minimo){
+        int dato = 0;
+            do{
+                try {
+                System.out.println(mensaje);
+                dato = new Scanner(System.in).nextInt();
+            } catch (Exception e) {
+                System.out.println("Error de ingreso de datos");
+            }
+        }while(dato < minimo);
+        return dato;
+    }
+    
     public int validarEntero(String mensaje){
         int dato = 0;
             do{
@@ -17,6 +30,7 @@ public class Validaciones {
         }while(dato < 1);
         return dato;
     }
+    
     public int validarEnteroRango(String mensaje, int maximo, int minimo){
         int dato = 0;
             do{

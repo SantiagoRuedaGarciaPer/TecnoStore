@@ -31,7 +31,7 @@ public class VentasDetalleDAO {
         ArrayList<VentasDetalle> detallesVenta = new ArrayList<>();
         
         try (Connection con = c.conectar()) {
-            PreparedStatement ps = con.prepareStatement("Select * from DetalleVentas");  
+            PreparedStatement ps = con.prepareStatement("Select * from Detalles_venta");  
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
                 Celular cel = cc.buscar(rs.getInt(3));
