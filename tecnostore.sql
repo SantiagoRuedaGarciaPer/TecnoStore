@@ -49,6 +49,15 @@ CREATE TABLE Detalles_venta(
 	foreign key (id_celular) references Celulares(id)
 );
 
+CREATE TABLE Credito(
+	id int primary key auto_increment,
+	id_cliente int not null,
+	id_venta int not null,
+	abonado double not null default 0,
+	foreign key (id_cliente) references Clientes(id),
+	foreign key (id_venta) references Ventas(id)
+);
+
 
 
 /*======================================== INSERCION DE DATOS INMUTABLES ========================================*/
