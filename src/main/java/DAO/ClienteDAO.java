@@ -58,7 +58,7 @@ public class ClienteDAO {
         int op = JOptionPane.showInternalConfirmDialog(null, "Seguro que desea eliminar a "+cliente+"?");
         if(op == 0){
             try (Connection con = c.conectar()) {
-                PreparedStatement ps = con.prepareStatement("Delete from Cliente where id =?");
+                PreparedStatement ps = con.prepareStatement("Delete from Clientes where id =?");
                 ps.setInt(1, cliente.getId());
                 ps.executeUpdate();
             } catch (SQLException e) {

@@ -4,24 +4,27 @@ import DAO.VentasDAO;
 import MODELO.Cliente;
 import MODELO.Ventas;
 import VISTA.Validaciones;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class VentasController implements Controller {
 
-    private final Validaciones v = new Validaciones();
-    private final VentasDAO vd = new VentasDAO();
-    private final ClienteController ccl = new ClienteController();
-
+    private  Validaciones v = new Validaciones();
+    private VentasDAO vd = new VentasDAO();
+    private  ClienteController ccl = new ClienteController();
+    private CreditoController ccr = new CreditoController();
+    
     @Override
     public void crear() {
         ccl.listar();
         Cliente cliente = ccl.buscar(v.validarEntero("ingrese el id del cliente"));
         Ventas venta = new Ventas(0, cliente, 0, Timestamp.from(Instant.MIN));
         vd.create(venta);
+        if(validarCredito()){
+            ccr.crear();
+        }    
+        
     }
 
     @Override
@@ -59,5 +62,18 @@ public class VentasController implements Controller {
     }
     public Ventas buscar(int id){
         return vd.buscar(id);
+        
+    }
+    
+    public boolean validarCredito(){
+        int op = v.validarEnteroRango("""
+                               Desea pagar a credito?
+                               1. Si
+                               2. no""", 2, 1);
+        if(op == 1){
+            return true;
+        }else{
+            return false;
+        }
     }
 }

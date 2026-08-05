@@ -7,7 +7,6 @@ import MODELO.Marca;
 import MODELO.Sistema_operativo;
 import VISTA.Validaciones;
 import java.util.ArrayList;
-import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
 
@@ -82,6 +81,7 @@ public class CelularController implements Controller{
                 System.out.println("Operacion cancelada");
                 break;
         }
+        cd.Update(cel);
     }
     
     @Override

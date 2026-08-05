@@ -7,8 +7,8 @@ import VISTA.Validaciones;
 
 
 public class ClienteController implements Controller {
-    private final ClienteDAO cd = new ClienteDAO();
-    private final Validaciones v = new Validaciones();
+    private  ClienteDAO cd = new ClienteDAO();
+    private Validaciones v = new Validaciones();
     
     @Override
     public void crear(){
